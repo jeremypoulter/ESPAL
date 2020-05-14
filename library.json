@@ -1,0 +1,27 @@
+{
+  "name": "ESPAL",
+  "keywords": "hal",
+  "description": "The ESP8266 and ESP32 have some really annoying differences in the ESP specific Arduino API. This library hopes to solve that by adding a common API to the ESP specific feature and hopefully make code easier to port between the two.",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/jeremypoulter/ESPAL.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Jeremy Poulter",
+      "email": "jeremy@bigjungle.net",
+      "maintainer": true
+    }
+  ],
+  "version": "0.0.1",
+  "frameworks": "arduino",
+  "platforms": "espressif32,espressif8266",
+  "dependencies": [
+    {
+      "name": "Micro Debug",
+      "version": "~0.0.3"
+    }
+  ]
+}
