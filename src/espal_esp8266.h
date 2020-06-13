@@ -14,11 +14,13 @@ class HalEsp8266 : public HalClass
     virtual uint32_t getFlashChipSize() {
       return ESP.getFlashChipSize();
     }
+    virtual size_t getUpdateSize() {
+      return (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000;
+    }
     virtual void reset() {
       ESP.reset();
     }
     virtual void eraseConfig() {
       ESP.eraseConfig();
     }
-
 };

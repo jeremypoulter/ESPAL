@@ -14,6 +14,10 @@ class HalEsp32 : public HalClass
     virtual uint32_t getFlashChipSize() {
       return ESP.getFlashChipSize();
     }
+    virtual size_t getUpdateSize() {
+      // #define UPDATE_SIZE_UNKNOWN 0xFFFFFFFF
+      return 0xFFFFFFFF;
+    }
     virtual void reset() {
       ESP.restart();
     }

@@ -17,6 +17,7 @@ class HalClass
     virtual uint64_t getChipId() = 0;
     virtual uint32_t getFreeHeap() = 0;
     virtual uint32_t getFlashChipSize() = 0;
+    virtual size_t getUpdateSize() = 0;
 
     virtual void reset() = 0;
     virtual void eraseConfig() = 0;
