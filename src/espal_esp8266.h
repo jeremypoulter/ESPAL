@@ -6,7 +6,8 @@ class HalEsp8266 : public HalClass
 {
   public:
     virtual uint64_t getChipId() {
-      return ESP.getChipId();
+      uint64_t id = ESP.getChipId();
+      return id << 24;
     }
     virtual uint32_t getFreeHeap() {
       return ESP.getFreeHeap();
