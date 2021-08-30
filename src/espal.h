@@ -25,6 +25,8 @@ class HalClass
     virtual String getShortId();
     virtual String getLongId(int base = ESPAL_ID_ENCODING_BASE);
     virtual void begin();
+
+    virtual String getChipInfo() = 0;
 };
 
 #if defined(ESP32)

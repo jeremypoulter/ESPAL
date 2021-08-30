@@ -1,5 +1,5 @@
 #ifndef _ESPAL_H
-#error Do not include directly, #include "espal.h" 
+#error Do not include directly, #include "espal.h"
 #endif // !_ESPAL_H
 
 class HalEsp32 : public HalClass
@@ -23,5 +23,25 @@ class HalEsp32 : public HalClass
     }
     virtual void eraseConfig() {
     }
-
+    virtual String getChipInfo() {
+      esp_chip_info_t info;
+      esp_chip_info(&info);
+      String infoString =
+        String(CHIP_ESP32 == info.model ? "ESP32" : "UNKOWN") +
+        "r" + String(info.revision) +
+        " " + String(info.cores) + " core";
+      if(info.features & CHIP_FEATURE_WIFI_BGN) {
+        infoString += " WiFi";
+      }
+      if(info.features & CHIP_FEATURE_BLE) {
+        infoString += " BLE";
+      }
+      if(info.features & CHIP_FEATURE_BT) {
+        infoString += " BT";
+      }
+      if(info.features & CHIP_FEATURE_EMB_FLASH) {
+        infoString += " Flash";
+      }
+      return infoString;
+    }
 };

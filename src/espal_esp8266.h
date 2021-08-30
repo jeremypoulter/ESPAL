@@ -1,5 +1,5 @@
 #ifndef _ESPAL_H
-#error Do not include directly, #include "espal.h" 
+#error Do not include directly, #include "espal.h"
 #endif // !_ESPAL_H
 
 class HalEsp8266 : public HalClass
@@ -23,5 +23,8 @@ class HalEsp8266 : public HalClass
     }
     virtual void eraseConfig() {
       ESP.eraseConfig();
+    }
+    virtual String getChipInfo() {
+      return "ESP8266";
     }
 };
