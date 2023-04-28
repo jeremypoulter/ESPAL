@@ -1,11 +1,14 @@
 #include "espal.h"
 
 #include <base64.h>
+#include <stdio.h>
 
 #if defined(ESP32)
 HalEsp32 ESPAL = HalEsp32();
 #elif defined(ESP8266)
 HalEsp8266 ESPAL = HalEsp8266();
+#elif defined(EPOXY_DUINO)
+HalEpoxyDuino ESPAL = HalEpoxyDuino();
 #endif
 
 String HalClass::getShortId()
@@ -28,8 +31,11 @@ String HalClass::getLongId(int base)
     chipId = chipId >> 16;
 
     char longId[16];
-
+#ifdef EPOXY_DUINO
+    snprintf(longId, sizeof(longId), 10 == base ? "%lu" : "%lx", chipId);
+#else
     sniprintf(longId, sizeof(longId), 10 == base ? "%llu" : "%llx", chipId);
+#endif
 
     return String(longId);
   }

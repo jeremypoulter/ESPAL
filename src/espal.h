@@ -35,6 +35,9 @@ extern HalEsp32 ESPAL;
 #elif defined(ESP8266)
 #include "espal_esp8266.h"
 extern HalEsp8266 ESPAL;
+#elif defined(EPOXY_DUINO)
+#include "espal_epoxyduino.h"
+extern HalEpoxyDuino ESPAL;
 #else
 #error Platform not supported
 #endif
