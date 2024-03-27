@@ -26,8 +26,30 @@ class HalEsp32 : public HalClass
     virtual String getChipInfo() {
       esp_chip_info_t info;
       esp_chip_info(&info);
-      String infoString =
-        String(CHIP_ESP32 == info.model ? "ESP32" : "UNKOWN") +
+      const char *model;
+      switch (info.model)
+      {
+        case CHIP_ESP32:
+          model = "ESP32";
+          break;
+        case CHIP_ESP32S2:
+          model = "ESP32-S2";
+          break;
+        case CHIP_ESP32S3:
+          model = "ESP32-S3";
+          break;
+        case CHIP_ESP32C3:
+          model = "ESP32-C3";
+          break;
+        case CHIP_ESP32H2:
+          model = "ESP32-H2";
+          break;
+        default:
+          model = "UNKNOWN";
+          break;
+      }
+      String infoString(model);
+      infoString +=
         "r" + String(info.revision) +
         " " + String(info.cores) + " core";
       if(info.features & CHIP_FEATURE_WIFI_BGN) {
