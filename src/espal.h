@@ -29,15 +29,15 @@ class HalClass
     virtual String getChipInfo() = 0;
 };
 
-#if defined(ESP32)
+#if defined(EPOXY_DUINO)
+#include "espal_epoxyduino.h"
+extern HalEpoxyDuino ESPAL;
+#elif defined(ESP32)
 #include "espal_esp32.h"
 extern HalEsp32 ESPAL;
 #elif defined(ESP8266)
 #include "espal_esp8266.h"
 extern HalEsp8266 ESPAL;
-#elif defined(EPOXY_DUINO)
-#include "espal_epoxyduino.h"
-extern HalEpoxyDuino ESPAL;
 #else
 #error Platform not supported
 #endif

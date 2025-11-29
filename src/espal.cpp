@@ -3,12 +3,12 @@
 #include <base64.h>
 #include <stdio.h>
 
-#if defined(ESP32)
+#if defined(EPOXY_DUINO)
+HalEpoxyDuino ESPAL = HalEpoxyDuino();
+#elif defined(ESP32)
 HalEsp32 ESPAL = HalEsp32();
 #elif defined(ESP8266)
 HalEsp8266 ESPAL = HalEsp8266();
-#elif defined(EPOXY_DUINO)
-HalEpoxyDuino ESPAL = HalEpoxyDuino();
 #endif
 
 String HalClass::getShortId()
