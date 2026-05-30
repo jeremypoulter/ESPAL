@@ -2,6 +2,10 @@
 #error Do not include directly, #include "espal.h"
 #endif // !_ESPAL_H
 
+// ESP-IDF 5 relocated esp_chip_info_t / esp_chip_info() / CHIP_* / CHIP_FEATURE_*
+// out of esp_system.h into esp_chip_info.h.
+#include <esp_chip_info.h>
+
 class HalEsp32 : public HalClass
 {
   public:
